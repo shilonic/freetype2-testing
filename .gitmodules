@@ -1,6 +1,6 @@
 [submodule "freetype2"]
   path = external/freetype2
-  url = https://gitlab.freedesktop.org/freetype/freetype.git
+  url = https://github.com/shilonic/freetype
   branch = master
 [submodule "glog"]
   path = external/glog

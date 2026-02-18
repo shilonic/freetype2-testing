@@ -30,7 +30,7 @@ if [[ "${#}" == "0" || "${1}" != "--no-init" ]]; then
     # There are prettier ways to achieve that, however, this is the simplest:
 
     git apply "../../fuzzing/settings/freetype2/ftoption.patch"
-
+    cp ../../fuzzing/pngshim.c src/sfnt/
     sh autogen.sh
 
     export BZIP2_CFLAGS="-I../bzip2"
