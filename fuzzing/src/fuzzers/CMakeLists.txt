@@ -60,3 +60,27 @@ foreach(fuzz_target_index RANGE "${num_fuzz_targets}")
     LINK_FLAGS  "${FUZZING_ENGINE}")
 
 endforeach()
+
+# ---------------------------------------------------------------------------
+# Self-contained, single-file truetype-render harness (all code inlined):
+
+add_executable("fuzzer-truetype-render-all" "truetype-render-all.cpp")
+
+target_compile_definitions("fuzzer-truetype-render-all"
+  PRIVATE
+  "${LOGGER_NAME}"
+  HAVE_ARCHIVE)
+
+target_link_libraries("fuzzer-truetype-render-all"
+  PRIVATE
+  "${LIBARCHIVE_STATIC_LIBRARY}"
+  "${FREETYPE_STATIC_LIBRARY}"
+  "${BZIP2_STATIC_LIBRARY}"
+  "${BROTLI_STATIC_LIBRARY}"
+  "${LIBPNG_STATIC_LIBRARY}"
+  "${ZLIB_STATIC_LIBRARY}"
+  "${LIBCXX_STATIC_LIBRARY}")
+
+set_target_properties("fuzzer-truetype-render-all" PROPERTIES
+  OUTPUT_NAME "truetype-render-all"
+  LINK_FLAGS  "${FUZZING_ENGINE}")
