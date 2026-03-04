@@ -40,6 +40,7 @@ fuzzers=(
 
     "truetype"
     "truetype-render"
+    "truetype-render-all"
     "truetype-render-i35"
     "truetype-render-i38"
 

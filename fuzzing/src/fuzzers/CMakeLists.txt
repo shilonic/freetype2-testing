@@ -66,10 +66,16 @@ endforeach()
 
 add_executable("fuzzer-truetype-render-all" "truetype-render-all.cpp")
 
-target_compile_definitions("fuzzer-truetype-render-all"
-  PRIVATE
-  "${LOGGER_NAME}"
-  HAVE_ARCHIVE)
+if("${LOGGER_NAME}" STREQUAL "")
+  target_compile_definitions("fuzzer-truetype-render-all"
+    PRIVATE
+    HAVE_ARCHIVE)
+else()
+  target_compile_definitions("fuzzer-truetype-render-all"
+    PRIVATE
+    "${LOGGER_NAME}"
+    HAVE_ARCHIVE)
+endif()
 
 target_link_libraries("fuzzer-truetype-render-all"
   PRIVATE
